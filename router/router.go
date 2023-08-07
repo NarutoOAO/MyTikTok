@@ -1,10 +1,10 @@
 package router
 
 import (
+	api "MyTikTok/api/v1"
 	"MyTikTok/middleware"
-	"net/http"
-
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func NewRouter() *gin.Engine {
@@ -17,8 +17,9 @@ func NewRouter() *gin.Engine {
 		v1.GET("ping", func(c *gin.Context) {
 			c.JSON(http.StatusOK, gin.H{"msg": "pong"})
 		})
-
+		v1.GET("/douyin/feed/", api.Feed)
 		authed := v1.Group("/")
+
 		authed.Use(middleware.JWT())
 		{
 		}
