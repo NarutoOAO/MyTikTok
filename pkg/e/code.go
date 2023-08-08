@@ -1,23 +1,19 @@
 package e
 
 const (
-	SUCCESS               = 200
-	UpdatePasswordSuccess = 201
-	NotExistInentifier    = 202
-	ERROR                 = 500
-	InvalidParams         = 400
+	SUCCESS       int32 = 0
+	ERROR         int32 = 500
+	InvalidParams       = 400
 
 	//成员错误
-	ErrorExistNick          = 10001
-	ErrorExistUser          = 10002
-	ErrorNotExistUser       = 10003
-	ErrorNotCompare         = 10004
-	ErrorNotComparePassword = 10005
-	ErrorFailEncryption     = 10006
-	ErrorNotExistProduct    = 10007
-	ErrorNotExistAddress    = 10008
-	ErrorExistFavorite      = 10009
-	ErrorUserNotFound       = 10010
+	ErrorExistUser          int32 = 10001
+	ErrorNotExistUser       int32 = 10002
+	ErrorNotComparePassword int32 = 10003
+	ErrorFailEncryption           = 10006
+	ErrorNotExistProduct          = 10007
+	ErrorNotExistAddress          = 10008
+	ErrorExistFavorite            = 10009
+	ErrorUserNotFound             = 10010
 
 	//店家错误
 	ErrorBossCheckTokenFail        = 20001

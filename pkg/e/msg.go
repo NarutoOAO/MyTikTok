@@ -1,16 +1,12 @@
 package e
 
-var MsgFlags = map[int]string{
-	SUCCESS:               "ok",
-	UpdatePasswordSuccess: "success",
-	NotExistInentifier:    "1",
-	ERROR:                 "fail",
-	InvalidParams:         "failed",
+var MsgFlags = map[int32]string{
+	SUCCESS:       "ok",
+	ERROR:         "fail",
+	InvalidParams: "failed",
 
-	ErrorExistNick:          "failed",
 	ErrorExistUser:          "failed",
 	ErrorNotExistUser:       "failed",
-	ErrorNotCompare:         "failed",
 	ErrorNotComparePassword: "failed",
 	ErrorFailEncryption:     "failed",
 	ErrorNotExistProduct:    "failed",
@@ -47,7 +43,7 @@ var MsgFlags = map[int]string{
 }
 
 // GetMsg 获取状态码对应信息
-func GetMsg(code int) string {
+func GetMsg(code int32) string {
 	msg, ok := MsgFlags[code]
 	if ok {
 		return msg
