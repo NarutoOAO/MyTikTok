@@ -1,108 +1,32 @@
 package util
 
 import (
+	"MyTikTok/conf"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"mime/multipart"
 	"os"
-	"strconv"
-
-	"MyTikTok/conf"
+	"path/filepath"
 )
 
-// UploadMaterialToLocalStatic1 upload material
-func UploadMaterialToLocalStatic1(file multipart.File, courseNumber int, materialName string) (filePath string, err error) {
-	cn := strconv.Itoa(courseNumber)
-	basePath := "." + conf.CoursePath + cn + "/"
+// UploadVideoToLocalStatic upload video
+func UploadVideoToLocalStatic(file multipart.File, userId int64, filename string) (filePath string, err error) {
+	finalName := fmt.Sprintf("%d_%s", userId, filename)
+	filePath = filepath.Join(".", conf.VideoPath, finalName)
+	basePath := "." + conf.VideoPath
 	if !DirExistOrNot(basePath) {
 		CreateDir(basePath)
 	}
-	coursePath := basePath + materialName + ".pdf"
 	content, err := ioutil.ReadAll(file)
 	if err != nil {
 		return "", err
 	}
-	err = ioutil.WriteFile(coursePath, content, 0666)
+	err = ioutil.WriteFile(filePath, content, 0666)
 	if err != nil {
 		return "", err
 	}
-	return cn + "/" + materialName + ".pdf", err
-}
-
-// UploadMaterialToLocalStatic2 upload material
-func UploadMaterialToLocalStatic2(file multipart.File, courseNumber int, materialName string) (filePath string, err error) {
-	cn := strconv.Itoa(courseNumber)
-	basePath := "." + conf.CoursePath + cn + "/"
-	if !DirExistOrNot(basePath) {
-		CreateDir(basePath)
-	}
-	coursePath := basePath + materialName + ".ppt"
-	content, err := ioutil.ReadAll(file)
-	if err != nil {
-		return "", err
-	}
-	err = ioutil.WriteFile(coursePath, content, 0666)
-	if err != nil {
-		return "", err
-	}
-	return cn + "/" + materialName + ".ppt", err
-}
-
-// UploadAvatarToLocalStatic upload avatar
-func UploadAvatarToLocalStatic(file multipart.File, userId uint, userName string) (filePath string, err error) {
-	bId := strconv.Itoa(int(userId))
-	basePath := "." + conf.AvatarPath + "user" + bId + "/"
-	if !DirExistOrNot(basePath) {
-		CreateDir(basePath)
-	}
-	avatarPath := basePath + userName + ".jpg"
-	content, err := ioutil.ReadAll(file)
-	if err != nil {
-		return "", err
-	}
-	err = ioutil.WriteFile(avatarPath, content, 0666)
-	if err != nil {
-		return "", err
-	}
-	return "user" + bId + "/" + userName + ".jpg", err
-}
-
-// UploadAssignmentToLocalStatic upload assignment
-func UploadAssignmentToLocalStatic(file multipart.File, courseNumber int, materialName string) (filePath string, err error) {
-	cn := strconv.Itoa(courseNumber)
-	basePath := "." + conf.AssignmentPath + cn + "/"
-	if !DirExistOrNot(basePath) {
-		CreateDir(basePath)
-	}
-	coursePath := basePath + materialName + ".pdf"
-	content, err := ioutil.ReadAll(file)
-	if err != nil {
-		return "", err
-	}
-	err = ioutil.WriteFile(coursePath, content, 0666)
-	if err != nil {
-		return "", err
-	}
-	return cn + "/" + materialName + ".pdf", err
-}
-
-// UploadAssSolutionToLocalStatic upload assignment solution
-func UploadAssSolutionToLocalStatic(file multipart.File, courseNumber int, materialName string) (filePath string, err error) {
-	cn := strconv.Itoa(courseNumber)
-	basePath := "." + conf.AssSolutionPath + cn + "/"
-	if !DirExistOrNot(basePath) {
-		CreateDir(basePath)
-	}
-	coursePath := basePath + materialName + ".pdf"
-	content, err := ioutil.ReadAll(file)
-	if err != nil {
-		return "", err
-	}
-	err = ioutil.WriteFile(coursePath, content, 0666)
-	if err != nil {
-		return "", err
-	}
-	return cn + "/" + materialName + ".pdf", err
+	return finalName, err
 }
 
 // DirExistOrNot

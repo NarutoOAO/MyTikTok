@@ -16,12 +16,11 @@ var (
 	DbPassWord string
 	DbName     string
 
-	PhotoHost       string
-	CoursePath      string
-	AssignmentPath  string
-	AssSolutionPath string
-	AvatarPath      string
-	CourseImgPath   string
+	Host                string
+	VideoPath           string
+	AvatarPath          string
+	BackGroundImagePath string
+	VideoCoverImagePath string
 
 	RedisDb     string
 	RedisAddr   string
@@ -55,12 +54,11 @@ func LoadMysqlData(file *ini.File) {
 }
 
 func LoadPhotoPath(file *ini.File) {
-	PhotoHost = file.Section("path").Key("Host").String()
-	CoursePath = file.Section("path").Key("CoursePath").String()
-	AssignmentPath = file.Section("path").Key("AssignmentPath").String()
-	AssSolutionPath = file.Section("path").Key("AssSolutionPath").String()
+	Host = file.Section("path").Key("Host").String()
+	VideoPath = file.Section("path").Key("VideoPath").String()
 	AvatarPath = file.Section("path").Key("AvatarPath").String()
-	CourseImgPath = file.Section("path").Key("CourseImgPath").String()
+	BackGroundImagePath = file.Section("path").Key("BackGroundImagePath").String()
+	VideoCoverImagePath = file.Section("path").Key("VideoCoverImagePath").String()
 }
 
 func LoadRedisData(file *ini.File) {

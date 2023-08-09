@@ -13,6 +13,6 @@ type Video struct {
 	CoverUrl      string // 视频封面地址
 	FavoriteCount int64  // 视频的点赞总数
 	CommentCount  int64  // 视频的评论总数
-	IsFavorite    int64  // true-已点赞，false-未点赞
-	title         string // 视频标题
+	IsFavorite    bool   // true-已点赞，false-未点赞
+	Title         string // 视频标题
 }
