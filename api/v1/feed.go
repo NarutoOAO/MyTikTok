@@ -16,7 +16,7 @@ func Feed(c *gin.Context) {
 
 func PublishList(c *gin.Context) {
 	service := service2.FeedService{}
-	service.Token = c.Query("token")
+	//service.Token = c.Query("token")
 	Id := c.Query("user_id")
 	uId, _ := strconv.Atoi(Id)
 	service.UserId = int64(uId)

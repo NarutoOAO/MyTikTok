@@ -20,7 +20,11 @@ func NewRouter() *gin.Engine {
 		v1.POST("/user/login/", api.Login)
 		v1.GET("/user/", api.GetUserInfo)
 		v1.POST("/publish/action/", api.Publish)
-		v1.GET("publish/list/", api.PublishList)
+		v1.GET("/publish/list/", api.PublishList)
+
+		//评论操作
+		v1.POST("/comment/action/", api.CommentOperation)
+		v1.GET("/comment/list/", api.GetComments)
 	}
 	return r
 }

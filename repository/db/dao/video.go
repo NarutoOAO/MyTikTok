@@ -30,3 +30,13 @@ func (dao *VideoDao) GetVideosById(userId int64) (videos []*model.Video, err err
 	err = dao.DB.Model(&model.Video{}).Where("user_id=?", userId).Find(&videos).Error
 	return
 }
+
+func (dao *VideoDao) GetVideoById(vId int64) (video *model.Video, err error) {
+	err = dao.DB.Model(&model.Video{}).Where("id=?", vId).First(&video).Error
+	return
+}
+
+func (dao *VideoDao) UpdateVideo(id int64, video *model.Video) (err error) {
+	err = dao.DB.Model(&model.Video{}).Where("id=?", id).Updates(&video).Error
+	return
+}
