@@ -11,10 +11,8 @@ var MsgFlags = map[int32]string{
 	ErrorFailEncryption:     "failed",
 	ErrorNotExistProduct:    "failed",
 	ErrorNotExistAddress:    "failed",
-	ErrorExistFavorite:      "failed",
-	ErrorUserNotFound:       "failed",
+	ErrorExistFavorite:      "已经点过赞了",
 
-	ErrorBossCheckTokenFail:        "failed",
 	ErrorBossCheckTokenTimeout:     "failed",
 	ErrorBossToken:                 "failed",
 	ErrorBoss:                      "failed",

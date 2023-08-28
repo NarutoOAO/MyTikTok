@@ -10,7 +10,7 @@ import (
 func Migration() {
 	//Implementation of data migration
 	err := _db.Set("gorm:table_options", "charset=utf8mb4").
-		AutoMigrate(&model.Video{}, &model.User{}, &model.Comment{})
+		AutoMigrate(&model.Video{}, &model.User{}, &model.Comment{}, &model.Favorite{})
 	if err != nil {
 		fmt.Println("register table fail")
 		os.Exit(0)

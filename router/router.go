@@ -25,6 +25,9 @@ func NewRouter() *gin.Engine {
 		//评论操作
 		v1.POST("/comment/action/", api.CommentOperation)
 		v1.GET("/comment/list/", api.GetComments)
+		v1.POST("/favorite/action/", api.FavoriteAction)
+		v1.GET("/favorite/list/", api.GetFavoriteList)
+
 	}
 	return r
 }
